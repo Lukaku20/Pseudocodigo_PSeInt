@@ -1,0 +1,29 @@
+//Realizar un programa que lea 10 números reales por teclado, los almacene en un arreglo y 
+//muestre por pantalla la suma, resta y multiplicación de todos los números ingresados al 
+//arreglo.
+Algoritmo ejercicio2_Guia4
+
+	Definir vec, i, suma, resta, multi como real
+	Dimension vec(10)
+	suma=0 
+	resta=0 
+	multi=1
+	Escribir "Ingrese 10 numeros reales: "
+	para i<-0 hasta 9 Hacer
+		Leer vec(i)
+		suma=suma + vec(i)
+	
+		Si i=0 Entonces
+			resta=vec(i)
+		SiNo
+			resta= resta - vec(i)
+		FinSi
+
+		multi=multi * vec(i)
+	FinPara
+
+	Escribir "La suma de los numeros ingresados es ", suma 
+	Escribir "La resta de los numeros ingresados es ", resta 
+	Escribir "La multiplicación de los numeros ingresados es ", multi
+	
+FinAlgoritmo

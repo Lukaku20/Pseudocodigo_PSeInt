@@ -1,0 +1,120 @@
+Algoritmo sin_titulo
+	
+	definir var1, i, j, fila, columna, diagonal, cont, sumafilas, suma, sumacolumnas, sumadiagonal,d2,cont2,cont3 Como Entero
+	definir validacion Como Logico
+	Hacer
+		Escribir "Ingrese el tamaño de la matriz, que sea entre 1 y 9"
+		leer fila
+	Mientras Que (fila>9) o (fila<0)
+	
+	columna=fila
+	Dimension var1(fila, columna)
+	
+	Dimension sumacolumnas[columna]
+	
+	Dimension sumafilas[fila]
+	
+	Dimension sumadiagonal[2]
+	
+	suma=0
+	cont=0
+	validacion=Verdadero
+	
+	///Asignacion de los valores de la matriz
+	Para i=0 Hasta fila-1
+		para j= 0 hasta columna-1 Hacer
+			var1(i,j)= Aleatorio(1,9)
+			Escribir Sin Saltar var1(i,j) , " "
+		FinPara
+		escribir ""
+	FinPara
+	
+	/// suma de las filas
+	Para j=0 Hasta fila-1
+	para i= 0 hasta fila-1 Hacer
+		suma=suma+ var1(j,i)
+	FinPara
+	sumafilas[j]=suma
+	Escribir "La suma de la fila " j+1, " es: " suma
+	suma=0
+    FinPara
+	
+	///suma de las columnas
+	Para j=0 Hasta fila-1
+		para i= columna-1 hasta 0 Con Paso -1 Hacer
+			suma=suma+ var1(cont,j)
+			cont=cont+1
+			
+		FinPara
+		cont=0
+		sumacolumnas[j]=suma
+		Escribir "La suma de la columna " j+1, " es: " suma
+		suma=0
+    FinPara
+
+
+
+///suma de las diagonales
+	suma=0
+	para i = 0 hasta fila-1 Hacer
+		suma= suma + var1(i,i)
+		
+	FinPara
+	sumadiagonal(0)= suma
+	Escribir "La suma de la primera diagonal es: " suma
+	
+	
+	suma=0
+	d2 = fila-1
+	para i = 0 Hasta fila-1 Hacer
+		suma = suma + var1(i,d2)
+		d2 = d2-1 
+	FinPara
+	sumadiagonal(1)= suma
+	Escribir "La suma de la segunda diagonal es: " suma
+	
+	///Comparacion de valores
+	
+	suma=0
+	cont=0
+	cont2 = 0
+	cont3 = 0
+	
+	Mientras (validacion==Verdadero) y (cont3<>columna) Hacer
+		Mientras (validacion==Verdadero) y (cont2<=2) Hacer
+				Mientras (validacion==Verdadero) y (cont<fila) Hacer
+					si sumafilas(0) = sumafilas(cont) Entonces
+						Escribir "suma filas " sumafilas(cont)
+						cont=cont+1
+						Escribir "contador " cont
+			         validacion=Verdadero
+				     suma=sumafilas(0)
+				    SiNo
+			         validacion=Falso
+					FinSi
+				FinMientras
+	        si suma==(sumadiagonal(cont2)) y (cont2<1) Entonces
+			 cont2=cont2+1
+			 validacion=Verdadero
+			
+		    SiNo
+			 validacion=Falso
+		    FinSi
+		FinMientras
+		
+		si suma = sumacolumnas(cont3) Entonces
+			cont3=cont3+1
+			validacion=Verdadero
+			
+		SiNo
+			validacion=Falso
+		FinSi
+	FinMientras
+	
+	si validacion=Verdadero Entonces
+		Escribir "La matriz ingresada es magica"
+	SiNo
+		Escribir "La matriz ingresada no es magica"
+	FinSi
+	
+FinAlgoritmo
